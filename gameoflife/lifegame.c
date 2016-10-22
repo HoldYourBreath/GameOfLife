@@ -9,6 +9,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
+#include <windows.h>
+#include <conio.h>
 
 #include "lifegame.h"
 

@@ -47,22 +47,24 @@ int main(void)
 	/* TODO: output final world state */
 
 	//Original
-	initialize_world();
-	output_world();
 
-	//First generation
-	next_generation();
-	output_world();
+	for (int world = 0; world = 10; world++)
+	{
+		initialize_world();
+		next_generation();
+		output_world();
 
-	//Second generation
-	next_generation();
-	output_world();
 
-	//Third generation
-	next_generation();
-	output_world();
+		/*int c = 1, d = 1;
 
-	return 0;
+		for (c = 1; c <= 32767; c++)
+			for (d = 1; d <= 32767; d++)
+			{
+			}
+		system("cls");*/
+	}
+		return 0;
+	
 }
 
 void next_generation(void) 
@@ -71,7 +73,7 @@ void next_generation(void)
 	   //generation according to the Game of Life rules
 	   //set the state of all the cells in the next generation
 	   //   Hint: use get_next_state(x,y) */
-	int x, y;
+	int x, y = 0;
 	for (x = 0; x < WORLDWIDTH; x++) 
 		{
 		for (y = 0; y < WORLDHEIGHT; y++) 
@@ -92,6 +94,7 @@ void next_generation(void)
 int get_next_state(int x, int y)
 {
 	int nbr_of_neighbors = num_neighbors(x, y);
+	int current_cell_state = get_cell_state(x, y);
 	/* TODO: for the specified cell, compute the state in
 	   the next generation using the rules
 	   if (get_cell_state(i, j) = DEAD)
@@ -102,7 +105,7 @@ int get_next_state(int x, int y)
 	   neighbors */
 	int next_state = DEAD;
 
-	if (get_cell_state(x, y) == ALIVE)
+	if (current_cell_state == ALIVE)
 	{
 		
 		next_state = ALIVE;
@@ -120,23 +123,19 @@ int get_next_state(int x, int y)
 		}
 
 		// A live cell with exactly two or three live neighbors lives
-		/*if (nbr_of_neighbors == 2 || nbr_of_neighbors == 3))
-		{
-			next_state = ALIVE;
-		}*/
-		
-	}
-	if (get_cell_state(x, y) == DEAD)
-	{ 
-
-		// A dead cell with exactly three neighbors becomes alive
-		if (nbr_of_neighbors == 3)
+		if (nbr_of_neighbors == 2 || nbr_of_neighbors == 3)
 		{
 			next_state = ALIVE;
 		}
-		else
+		
+	}
+	if (current_cell_state == DEAD)
+	{ 
+
+		// A dead cell with exactly three neighbors becomes alive
+		if (nbr_of_neighbors == 3) 
 		{
-			next_state = DEAD;
+			next_state = ALIVE;
 		}
 	}
 
@@ -153,9 +152,9 @@ int num_neighbors(int x, int y)
 	// x = x - 1
 	if (get_cell_state(x - 1, y - 1) == ALIVE)
 		count++;
-	if (get_cell_state(x, y - 1) == ALIVE)
+	if (get_cell_state(x - 1, y ) == ALIVE)
 		count++;
-	if (get_cell_state(x + 1, y - 1) == ALIVE)
+	if (get_cell_state(x - 1, y + 1) == ALIVE)
 		count++;
 
 	// x = x
