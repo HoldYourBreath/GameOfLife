@@ -91,6 +91,7 @@ void next_generation(void)
 
 int get_next_state(int x, int y)
 {
+	int nbr_of_neighbors = num_neighbors(x, y);
 	/* TODO: for the specified cell, compute the state in
 	   the next generation using the rules
 	   if (get_cell_state(i, j) = DEAD)
@@ -103,35 +104,40 @@ int get_next_state(int x, int y)
 
 	if (get_cell_state(x, y) == ALIVE)
 	{
+		
+		next_state = ALIVE;
 
 		// A live cell with fewer than two live neighbors dies
-		if (num_neighbors(x, y) < 2)
+		if (nbr_of_neighbors < 2)
 		{
 			next_state = DEAD;
 		}
 
 		// A live cell with more than three live neighbors also dies
-		if (num_neighbors(x, y) > 3)
+		if (nbr_of_neighbors > 3)
 		{
 			next_state = DEAD;
 		}
 
 		// A live cell with exactly two or three live neighbors lives
-		if (num_neighbors(x, y) == 2 || (num_neighbors(x, y) == 3))
+		/*if (nbr_of_neighbors == 2 || nbr_of_neighbors == 3))
+		{
+			next_state = ALIVE;
+		}*/
+		
+	}
+	if (get_cell_state(x, y) == DEAD)
+	{ 
+
+		// A dead cell with exactly three neighbors becomes alive
+		if (nbr_of_neighbors == 3)
 		{
 			next_state = ALIVE;
 		}
-		if (get_cell_state(x, y) == DEAD)
-
-			// A dead cell with exactly three neighbors becomes alive
-			if (num_neighbors(x, y) == 3)
-			{
-				next_state = ALIVE;
-			}
-			else
-			{
-				next_state = DEAD;
-			}
+		else
+		{
+			next_state = DEAD;
+		}
 	}
 
 	return next_state;
@@ -166,7 +172,7 @@ int num_neighbors(int x, int y)
 	if (get_cell_state(x + 1, y + 1) == ALIVE)
 		count++;
 
-	printf("Count 1: %d \n", count);
+	//printf("Count 1: %d \n", count);
 
 		return count;
 
