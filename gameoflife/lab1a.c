@@ -47,21 +47,22 @@ int main(void)
 	/* TODO: output final world state */
 
 	//Original
-
-	for (int world = 0; world = 10; world++)
+	initialize_world();
+	int world = 0;
+	for (world = 0; world = 10; world++)
 	{
-		initialize_world();
+		
 		next_generation();
 		output_world();
 
 
-		/*int c = 1, d = 1;
+		int c = 1, d = 1;
 
 		for (c = 1; c <= 32767; c++)
 			for (d = 1; d <= 32767; d++)
 			{
 			}
-		system("cls");*/
+		system("cls");
 	}
 		return 0;
 	
