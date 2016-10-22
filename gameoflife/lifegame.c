@@ -1,20 +1,15 @@
 /*
  * lifegame.c
  *
- *  Created on:
- *      Author:
+ *  Created on: 2016-10-22
+ *      Author: Janne Mäkinen
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
-#include <windows.h>
-#include <conio.h>
-
 #include "lifegame.h"
-
-/* hard-coded world size */
 
 /* character representations of cell states */
 #define CHAR_ALIVE '*'
@@ -44,8 +39,6 @@ void initialize_world_from_file(const char * filename) {
 
 	   Also need to reset the next generation to DEAD
 	 */
-
-
 }
 
 void save_world_to_file(const char * filename) {
@@ -59,8 +52,6 @@ void save_world_to_file(const char * filename) {
 	   initialize_world_from_file(filename) above; we can use
 	   it to resume a game later
 	 */
-
-
 }
 
 /* you shouldn't need to edit anything below this line */

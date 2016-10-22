@@ -15,9 +15,8 @@
 #define DEAD 0
 #define ALIVE 1
 
-//#define WORLDWIDTH 39
+/* hard-coded world size */
 #define WORLDWIDTH 8
-//#define WORLDHEIGHT 20
 #define WORLDHEIGHT 8
 
 
